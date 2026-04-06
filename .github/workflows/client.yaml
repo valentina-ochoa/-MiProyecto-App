@@ -1,0 +1,9 @@
+on: [push]
+
+jobs:
+  deploy:
+    uses: valentina-ochoa/MiProyecto-SharedWorkflows/.github/workflows/deploy-api.yaml@pipeTest
+
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
