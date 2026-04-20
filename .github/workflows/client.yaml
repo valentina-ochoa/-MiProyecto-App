@@ -1,15 +1,9 @@
-on:
-  push:
-    tags:
-      - 'v*.*.*'
+on: [push]
 
 jobs:
   deploy:
-    uses: valentina-ochoa/MiProyecto-SharedWorkflows/.github/workflows/deploy-api.yaml@main
 
-    with:
-      image-name: mi-api
-      image-tag: ${{ github.ref_name }}
+    uses: valentina-ochoa/MiProyecto-SharedWorkflows/.github/workflows/deploy-api.yaml@main
 
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
