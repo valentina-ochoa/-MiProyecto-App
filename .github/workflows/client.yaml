@@ -3,7 +3,7 @@ on: [push]
 jobs:
   deploy:
 
-    uses: valentina-ochoa/-MiProyecto-SharedWorkflows/.github/workflows/deploy-api.yaml@main
+    uses: valentina-ochoa/MiProyecto-SharedWorkflows/.github/workflows/deploy-api.yaml@pipeTest
 
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
