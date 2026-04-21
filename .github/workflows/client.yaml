@@ -9,8 +9,8 @@ on:
 
 jobs:
   deploy:
-    uses: valentina-ochoa/MiProyecto-SharedWorkflows/.github/workflows/deploy-api.yaml@main
-
+    uses: valentina-ochoa/MiProyecto-SharedWorkflows/.github/workflows/deploy-api.yaml@pipeTest
+    
     with:
       image-name: mi-api
       image-tag: ${{ github.ref_name }}
