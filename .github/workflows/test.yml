@@ -2,8 +2,10 @@ name: Test Pipeline
 
 on:
   push:
-    branches:
-      - "**"
+    branches-ignore:
+      - main
+    tags-ignore:
+      - '*'
 
 jobs:
   test:
