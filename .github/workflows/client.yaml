@@ -4,17 +4,16 @@ on:
   push:
     tags:
       - 'v*.*.*'
-
   workflow_dispatch:
 
 jobs:
-  deploy:
-    uses: valentina-ochoa/MiProyecto-SharedWorkflows/.github/workflows/deploy-api.yaml@pipeTest
-    
+  usar-receta-compartida:
+    uses: asanchezo-duoc/AUY1104-SharedWorkflows/.github/workflows/deploy-api.yaml@main
     with:
       image-name: mi-api
       image-tag: ${{ github.ref_name }}
-
+      k3s-server-public-ip: ${{ vars.K3S_SERVER_PUBLIC_IP }}
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      EA2_SSH_PRIVATE_KEY: ${{ secrets.EA2_SSH_PRIVATE_KEY }}
