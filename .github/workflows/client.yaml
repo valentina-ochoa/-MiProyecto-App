@@ -1,4 +1,4 @@
-codecoename: Client Deploy V3
+name: Client Deploy V3
 
 on:
   push:
