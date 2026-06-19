@@ -18,9 +18,9 @@ spec:
 
     spec:
       containers:
-      - name: demo-api
-        image: valochoa09/demo-api:latest
-        imagePullPolicy: Always
+        - name: demo-api
+          image: DOCKER_USERNAME/mi-api:latest
+          imagePullPolicy: Always
 
-        ports:
-        - containerPort: 3000
+          ports:
+            - containerPort: 3000
