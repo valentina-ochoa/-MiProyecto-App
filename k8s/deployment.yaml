@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: demo-api-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: demo-api
+
+  template:
+    metadata:
+      labels:
+        app: demo-api
+
+    spec:
+      containers:
+      - name: demo-api
+        image: valochoa09/demo-api:latest
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 3000
