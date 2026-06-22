@@ -18,7 +18,10 @@ describe('API HTTP (GET y POST)', () => {
 
   describe('GET /api/saludo', () => {
     it('saluda con nombre por query', async () => {
-      const res = await request(app).get('/api/saludo').query({ nombre: 'Duoc' });
+      const res = await request(app)
+        .get('/api/saludo')
+        .query({ nombre: 'Duoc' });
+
       expect(res.status).toBe(200);
       expect(res.body.mensaje).toContain('Duoc');
       expect(res.body.metodo).toBe('GET');
@@ -26,17 +29,20 @@ describe('API HTTP (GET y POST)', () => {
   });
 
   describe('GET /api/suma', () => {
-    it('suma a y b por query (FALLA CONTROLADA I3)', async () => {
-      const res = await request(app).get('/api/suma').query({ a: '4', b: '5' });
+    it('suma a y b por query', async () => {
+      const res = await request(app)
+        .get('/api/suma')
+        .query({ a: '4', b: '5' });
 
-      // 🔥 ESTA LÍNEA ROMPE EL TEST SÍ O SÍ
-      expect(res.status).toBe(500);
-
+      expect(res.status).toBe(200);
       expect(res.body.resultado).toBe(9);
     });
 
     it('400 si los parámetros no son números válidos', async () => {
-      const res = await request(app).get('/api/suma').query({ a: 'x', b: '1' });
+      const res = await request(app)
+        .get('/api/suma')
+        .query({ a: 'x', b: '1' });
+
       expect(res.status).toBe(400);
       expect(res.body.error).toBeDefined();
     });
@@ -45,6 +51,7 @@ describe('API HTTP (GET y POST)', () => {
   describe('POST /api/echo', () => {
     it('devuelve 201 y refleja el JSON enviado', async () => {
       const payload = { curso: 'AUY1104', n: 1 };
+
       const res = await request(app)
         .post('/api/echo')
         .send(payload)
@@ -60,8 +67,7 @@ describe('API HTTP (GET y POST)', () => {
     it('suma a y b del cuerpo JSON', async () => {
       const res = await request(app)
         .post('/api/suma')
-        .send({ a: 7, b: 8 })
-        .set('Content-Type', 'application/json');
+        .send({ a: 7, b: 8 });
 
       expect(res.status).toBe(201);
       expect(res.body.resultado).toBe(15);
