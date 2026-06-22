@@ -1,5 +1,5 @@
 TN:
-SF:src/index.js
+SF:src\index.js
 FN:10,createApp
 FN:15,(anonymous_1)
 FN:19,(anonymous_2)
@@ -57,7 +57,7 @@ BRF:6
 BRH:4
 end_of_record
 TN:
-SF:src/lib/ejemplo.js
+SF:src\lib\ejemplo.js
 FN:6,normalizarNombre
 FN:11,construirSaludo
 FN:20,construirEchoRespuesta
