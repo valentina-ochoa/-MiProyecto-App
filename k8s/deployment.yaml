@@ -1,26 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
-
 metadata:
-  name: demo-api-deployment
-
+  name: demo-api
 spec:
   replicas: 1
-
   selector:
     matchLabels:
       app: demo-api
-
   template:
     metadata:
       labels:
         app: demo-api
-
     spec:
       containers:
         - name: demo-api
-          image: DOCKER_USERNAME/mi-api:latest
+          image: valochoa09/mi-api:latest
           imagePullPolicy: Always
-
           ports:
             - containerPort: 3000
