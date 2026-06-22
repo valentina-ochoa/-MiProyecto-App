@@ -90,3 +90,6 @@ describe('API HTTP (GET y POST)', () => {
     });
   });
 });
+test('fallo forzado evaluacion', () => {
+  expect(1).toBe(2);
+});
