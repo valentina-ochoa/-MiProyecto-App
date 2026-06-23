@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: demo-api
-          image: valochoa09/mi-api:tag-que-no-existe-xyz
+          image: valochoa09/mi-api:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
