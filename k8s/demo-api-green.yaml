@@ -1,32 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
-
 metadata:
   name: demo-api-green
-
 spec:
   replicas: 1
-
   selector:
     matchLabels:
       app: demo-api
       version: green
-
   template:
-
     metadata:
       labels:
         app: demo-api
         version: green
-
     spec:
-
       containers:
-
       - name: demo-api
-
         image: valochoa09/mi-api:v1.0.21
-
+        imagePullPolicy: Always
         ports:
-
         - containerPort: 3000
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          failureThreshold: 3
