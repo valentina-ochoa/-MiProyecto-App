@@ -1,23 +1,19 @@
 name: Client Deploy V3
-
 on:
   push:
     tags:
       - "v*.*.*"
-
   workflow_dispatch:
-
 jobs:
   deploy:
     uses: valentina-ochoa/AUY1104-K8s-Lab/.github/workflows/deploy-api.yaml@main
-
     with:
       image-name: mi-api
       image-tag: ${{ github.ref_name }}
       k3s-server-public-ip: ${{ vars.K3S_SERVER_PUBLIC_IP }}
       environment: production
       namespace: default
-
+      env-vars: "LOG_LEVEL=info APP_ENV=production"
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
