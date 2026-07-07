@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: demo-api-green
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: demo-api
+      version: green
+
+  template:
+
+    metadata:
+      labels:
+        app: demo-api
+        version: green
+
+    spec:
+
+      containers:
+
+      - name: demo-api
+
+        image: valochoa09/mi-api:v1.0.21
+
+        ports:
+
+        - containerPort: 3000
