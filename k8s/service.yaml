@@ -9,8 +9,10 @@ spec:
 
   selector:
     app: demo-api
+    version: blue
 
   ports:
-    - port: 3000
-      targetPort: 3000
-      nodePort: 30090
+
+  - port: 3000
+    targetPort: 3000
+    nodePort: 30090
