@@ -1,24 +1,12 @@
 name: Client Deploy V3
-
 on:
   push:
     tags:
       - "v*.*.*"
   workflow_dispatch:
-
 jobs:
-  build:
-    uses: valentina-ochoa/AUY1104-K8s-Lab/.github/workflows/build-push.yaml@main
-    with:
-      image-name: mi-api
-      image-tag: ${{ github.ref_name }}
-    secrets:
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-
   deploy:
-    needs: build
-    uses: valentina-ochoa/AUY1104-K8s-Lab/.github/workflows/deploy-bluegreen.yaml@main
+    uses: valentina-ochoa/AUY1104-K8s-Lab/.github/workflows/deploy-api.yaml@main
     with:
       image-name: mi-api
       image-tag: ${{ github.ref_name }}
@@ -28,4 +16,5 @@ jobs:
       env_vars: "LOG_LEVEL=debug APP_ENV=production"
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       EA2_SSH_PRIVATE_KEY: ${{ secrets.EA2_SSH_PRIVATE_KEY }}
