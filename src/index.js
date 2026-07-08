@@ -12,11 +12,8 @@ function createApp() {
 
   app.use(express.json());
 
- app.get('/health', (req, res) => {
-  res.status(500).json({
-    ok: false,
-    mensaje: "Fallo simulado"
-  });
+app.get('/health', (req, res) => {
+  res.json(healthPayload());
 });
 
   app.get('/api/saludo', (req, res) => {
