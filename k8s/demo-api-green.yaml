@@ -29,7 +29,7 @@ spec:
 
       - name: demo-api
 
-        image: valochoa09/mi-api:v1.0.21
+        image: valochoa09/mi-api:v1.0.24
 
         imagePullPolicy: Always
 
