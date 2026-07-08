@@ -1,8 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
-
 metadata:
   name: demo-api-blue
+  labels:
+    app: demo-api
+    version: blue
 
 spec:
   replicas: 1
@@ -20,7 +22,6 @@ spec:
 
     spec:
       containers:
-
       - name: demo-api
         image: valochoa09/mi-api:v1.0.18
         imagePullPolicy: Always
@@ -28,11 +29,11 @@ spec:
         ports:
         - containerPort: 3000
 
+
         readinessProbe:
           httpGet:
             path: /health
             port: 3000
-
           initialDelaySeconds: 5
           periodSeconds: 5
           failureThreshold: 3
@@ -42,7 +43,6 @@ spec:
           httpGet:
             path: /health
             port: 3000
-
           initialDelaySeconds: 10
           periodSeconds: 10
           failureThreshold: 3
