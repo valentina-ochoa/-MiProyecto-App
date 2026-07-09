@@ -4,6 +4,11 @@ on:
     tags:
       - "v*.*.*"
   workflow_dispatch:
+    inputs:
+      env_vars:
+        required: false
+        type: string
+        default: "LOG_LEVEL=debug APP_ENV=production"
 jobs:
   deploy:
     uses: valentina-ochoa/AUY1104-K8s-Lab/.github/workflows/deploy-api.yaml@main
@@ -13,7 +18,7 @@ jobs:
       k3s-server-public-ip: ${{ vars.K3S_SERVER_PUBLIC_IP }}
       environment: production
       namespace: default
-      env_vars: "LOG_LEVEL=debug APP_ENV=production"
+      env_vars: ${{ inputs.env_vars }}
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
