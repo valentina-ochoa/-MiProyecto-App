@@ -13,6 +13,9 @@ function createApp() {
   app.use(express.json());
 
 app.get('/health', (req, res) => {
+  if (process.env.FORCE_HEALTH_FAIL === 'true') {
+    return res.status(500).json({ ok: false, error: 'Fallo forzado (chaos test)' });
+  }
   res.json(healthPayload());
 });
 
